@@ -49,6 +49,12 @@
                                     <input type="text" name="logo_firma_no" class="form-control" value="{{$setting->logo_firma_no}}" required>
                                 </div>
                             </div>
+                            <div class="col-12 col-lg-6 mt-2" >
+                                <div class="form-group">
+                                    <label for="logo_db_ip">Veitabanı Ip</label>
+                                    <input type="text" name="logo_db_ip" id="logo_db_ip" class="form-control" value="{{$logo_db_ip}}" required>
+                                </div>
+                            </div>
                       
                         <div class="d-flex justify-content-end mt-2">
                             <button type="submit" class="btn btn-primary">

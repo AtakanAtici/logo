@@ -122,7 +122,7 @@ class OrderController extends Controller
         $xml = "<SALES_ORDERS>";
         $xml .= "<ORDER_SLIP DBOP='INS'>";
         $xml .= "<NUMBER>{$order->code}</NUMBER>";
-        $xml .= "<DATE>".Carbon::parse($order->order_date)->format('d.m.Y')."</DATE>";
+        $xml .= "<DATE>" . Carbon::parse($order->order_date)->format('d.m.Y') . "</DATE>";
         $xml .= "<TIME></TIME>";
         $xml .= "<ARP_CODE>" . ($order->current != null ? $order->current->CODE : "") . "</ARP_CODE>"; //Cari kodu
         $xml .= "<TOTAL_DISCOUNTED>0</TOTAL_DISCOUNTED>";
@@ -133,10 +133,10 @@ class OrderController extends Controller
         $xml .= "<RC_NET>{$order->items->sum('total_price')}</RC_NET>"; //Net Kur (vergi dahil toplam yazılacak)
         $xml .= "<ORDER_STATUS>1</ORDER_STATUS>";
         $xml .= "<CREATED_BY>1</CREATED_BY>"; //Kullanıcı kodu
-        $xml .= "<DATE_CREATED>".Carbon::parse($order->created_at)->format('d.m.Y')."</DATE_CREATED>"; //Oluşturulma tarihi
-        $xml .= "<HOUR_CREATED>".Carbon::parse($order->created_at)->format('h')."</HOUR_CREATED>"; //Oluşturulma saati
-        $xml .= "<MIN_CREATED>".Carbon::parse($order->created_at)->format('i')."</MIN_CREATED>"; //Oluşturulma dakikası
-        $xml .= "<SEC_CREATED>".Carbon::parse($order->created_at)->format('s')."</SEC_CREATED>"; //Oluşturulma saniyesi
+        $xml .= "<DATE_CREATED>" . Carbon::parse($order->created_at)->format('d.m.Y') . "</DATE_CREATED>"; //Oluşturulma tarihi
+        $xml .= "<HOUR_CREATED>" . Carbon::parse($order->created_at)->format('h') . "</HOUR_CREATED>"; //Oluşturulma saati
+        $xml .= "<MIN_CREATED>" . Carbon::parse($order->created_at)->format('i') . "</MIN_CREATED>"; //Oluşturulma dakikası
+        $xml .= "<SEC_CREATED>" . Carbon::parse($order->created_at)->format('s') . "</SEC_CREATED>"; //Oluşturulma saniyesi
         $xml .= "<CURRSEL_TOTAL>2</CURRSEL_TOTAL>"; //genel döviz türü
         $xml .= "<DATA_REFERENCE>1</DATA_REFERENCE>";
         $xml .= "<TRANSACTIONS>";
@@ -175,7 +175,7 @@ class OrderController extends Controller
         $xml .= "</ORDER_SLIP>";
         $xml .= "</SALES_ORDERS>";
 
-        return response($xml)->header('Content-Type', 'text/xml');
+        return response($xml)->header('Content-Type', 'text/xml')->header('Content-Disposition', 'attachment; filename="' . $order->code . '.xml"');
     }
 
     /*
@@ -200,7 +200,7 @@ class OrderController extends Controller
             'CLIENTREF' => $order->current->LOGICALREF,
             'RECVREF' => 0,
             'ACCOUNTREF' => 0,
-            'CENTERREF' =>0,
+            'CENTERREF' => 0,
             'SOURCEINDEX' => 0,
             'SOURCECOSTGRP' => 0,
             'UPDCURR' => 0,
@@ -270,7 +270,7 @@ class OrderController extends Controller
                 'TOTAL' => $item->total_price,
                 'VAT' => $item->tax_percent,
                 'VATAMNT' => $item->tax_amount,
-                'LINENO_'=> $key+1,
+                'LINENO_' => $key + 1,
                 'TRCODE' => 2,
                 'DATE_' => (string)Carbon::parse($order->order_date)->format('Y'),
                 'TIME_' => (string)Carbon::parse($order->order_date)->format('H'),

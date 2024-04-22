@@ -15,7 +15,8 @@ class SettingController extends Controller
             $setting = new Setting();
             $setting->save();
         }
-        return view('settings', compact('setting'));
+        $logo_db_ip = file_get_contents('connected_db_ip.txt');
+        return view('settings', compact('setting', 'logo_db_ip'));
     }
 
     function update(Request $request)
@@ -32,6 +33,7 @@ class SettingController extends Controller
             $setting->logo_path = $file->store('logos', 'public');
         }
         $setting->save();
+        file_put_contents('connected_db_ip.txt', $request->logo_db_ip);
         Helper::setSelectedDbName($setting->logo_db_name);
         return redirect()->route('settings');
     }

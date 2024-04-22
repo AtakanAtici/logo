@@ -96,7 +96,7 @@ return [
         'logo' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
-            'host' => "127.0.0.1",
+            'host' => file_get_contents("connected_db_ip.txt"),
             'port' => env('DB_PORT', '1433'),
             'database' => file_get_contents("connected_db.txt"),
             'username' => env('DB_USERNAME', 'forge'),
