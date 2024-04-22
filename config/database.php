@@ -96,7 +96,7 @@ return [
         'logo' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
-            'host' => "88.249.36.183",
+            'host' => "127.0.0.1",
             'port' => env('DB_PORT', '1433'),
             'database' => file_get_contents("connected_db.txt"),
             'username' => env('DB_USERNAME', 'forge'),
@@ -139,7 +139,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [

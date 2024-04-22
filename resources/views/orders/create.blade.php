@@ -26,7 +26,7 @@
                             <div class="col-12 col-lg-6 mt-2">
                                 <div class="form-group">
                                     <label for="">Tarih</label>
-                                    <input type="date" id="order_date" name="order_date" class="form-control">
+                                    <input type="date" id="order_date" value="{{now()->format('Y-m-d')}}" name="order_date" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -55,8 +55,8 @@
                         </div>
                         
                        <div class="row">
-                        <div class="row mt-2 d-none" id="form">
-                            <div class="mb-3 col col-lg-2">
+                        <div class="col-12 border row py-3 mt-2 d-none" id="form">
+                            <div class="mb-3 col-12 col-lg-6">
                                 <label for="name" class="form-label">Stok</label>
                                 <select class="select2 form-control stock_select stock_id" name="stock_id[]" required>
                                     <option value="0">Seçiniz..</option>
@@ -66,40 +66,40 @@
                                 @endforeach
                                 </select>
                             </div>
-                            <div class="mb-3 col col-lg-1">
+                            <div class="mb-3 col-12 col-lg-3">
                                 <label for="" class="form-label">adet</label>
                                 <input type="text" class="form-control quantity" >
                             </div>
                             @if (auth()->user()->can('order_price'))
-                                <div class="mb-3 col col-lg-1">
+                                <div class="mb-3 col-12 col-lg-3">
                                     <label for="" class="form-label">Birim Fiyat</label>
-                                    <input type="text" class="form-control per_price money">
+                                    <input type="text" class="form-control per_price">
                                 </div>
-                                <div class="mb-3 col">
+                                <div class="mb-3 col-12 col-lg-6">
                                     <label for="" class="form-label text-nowrap">Vergi Oranı</label>
                                     <input type="number" class="form-control tax_percent">
                                 </div>
-                                <div class="mb-3 col">
+                                <div class="mb-3 col-12 col-lg-6">
                                     <label for="" class="form-label text-nowrap">Vergi Dahil Toplam</label>
                                     <input type="text" class="form-control total_price money">
                                 </div>
                             @else
                             
-                            <div class="mb-3 col col-lg-2">
+                            <div class="mb-3 col col-12 col-lg-3">
                                 <label for="" class="form-label">Birim Fiyat</label>
                                 <input type="text" class="form-control per_price money" readonly>
                             </div>
-                            <div class="mb-3 col">
+                            <div class="mb-3 col-12 col-lg-6">
                                 <label for="" class="form-label text-nowrap">Vergi Oranı</label>
                                 <input type="number" class="form-control tax_percent" readonly>
                             </div>
-                            <div class="mb-3 col">
+                            <div class="mb-3 col-12 col-lg-6">
                                 <label for="" class="form-label text-nowrap">Vergi Dahil Toplam</label>
                                 <input type="text" class="form-control total_price money" readonly>
                             </div>
                             @endif
-                            <div class="mb-3 col-1 d-flex align-items-center mt-4">
-                                <button onclick="removeItem(this)" type="button" class="btn btn-sm btn-outline-danger">
+                            <div class="mb-3 col-12 d-flex align-items-center mt-4">
+                                <button onclick="removeItem(this)" type="button" class="btn btn-sm btn-outline-danger w-100">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </div>

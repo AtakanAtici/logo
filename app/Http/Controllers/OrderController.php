@@ -195,7 +195,7 @@ class OrderController extends Controller
             'LOGICALREF' => $inserted_id,
             'TRCODE' => 1, // verilen sipariş
             'FICHENO' => $order->code,
-            'DATE_' => (string)Carbon::parse($order->order_date)->format('Y'),
+            'DATE_' => (string)Carbon::parse($order->order_date)->format('Y-m-d H:i:s'),
             'TIME_' => (string)Carbon::parse($order->order_date)->format('h'),
             'CLIENTREF' => $order->current->LOGICALREF,
             'RECVREF' => 0,
