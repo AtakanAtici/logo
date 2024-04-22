@@ -28,8 +28,6 @@
                                         <th>İşlem Türü</th>
                                         <th>Tarih.</th>
                                         <th>Tutar</th>
-                                        <th>KDV</th>
-                                        <th>KDV Tutarı</th>
                                         <th>Açıklama</th>
                                     </tr>
                                     </thead>
@@ -45,8 +43,7 @@
                                             {{-- <td class="text-nowrap">{{$transaction->hareket_turu}}</td> --}}
 {{--                                            <td class="text-nowrap">{{$transaction->transactionsType ? $transaction->transactionsType->name :"-"}}</td>--}}
                                             <td>{{number_format($transaction->tutar, '2', '.',',')}}₺</td>
-                                            <td class="text-nowrap">%{{$transaction->kdv}}</td>
-                                            <td>{{number_format($transaction->kdv_tutar, '2', '.',',')}}₺</td>
+                                           
 {{--                                            <td>{{\Illuminate\Support\Str::substr($transaction->aciklama, 0, 12)}}</td>--}}
                                             <td>{{$transaction->aciklama}}</td>
                                         </tr>

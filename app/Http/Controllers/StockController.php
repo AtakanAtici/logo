@@ -31,7 +31,7 @@ class StockController extends Controller
 
     function getStock($code) {
         $stock = DB::connection('logo')->table(generateTableName('ITEMS', true))->where('CODE', $code)->first();
-        $stock->price = DB::connection('logo')->table(generateTableName('PRCLIST', true))->where('CARDREF', $stock->LOGICALREF)->where('PTYPE', 1)->first()->PRICE;
+        $stock->price = DB::connection('logo')->table(generateTableName('PRCLIST', true))->where('CARDREF', $stock->LOGICALREF)->where('PTYPE', 1)->first()->PRICE ?? 0;
         return response()->json($stock);
     }
 }
